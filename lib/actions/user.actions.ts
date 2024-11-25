@@ -53,7 +53,7 @@ export const createAccount = async ({ fullName, email }: {fullName: string; emai
       {
         fullName,
         email,
-        avatar: "",
+        avatar: "https://www.svgrepo.com/show/452030/avatar-default.svg",
         accountId
       }
     );
