@@ -17,7 +17,6 @@ import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { kMaxLength } from 'buffer';
 
 type FormType = 'sign-in' | 'sign-up';
 
@@ -54,28 +53,30 @@ const AuthForm = ({ type }: { type: FormType }) => {
           <h1 className="form-title">
             {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
           </h1>
-          {type === 'sign-up' && (
-            <FormField
-              control={form.control}
-              name="fullName"
-              render={({ field }) => (
-                <FormItem>
-                  <div className="shad-form-item">
-                    <FormLabel className="shad-form-label">Full Name</FormLabel>
+          {
+            type === 'sign-up' && (
+              <FormField
+                control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="shad-form-item">
+                      <FormLabel className="shad-form-label">Full Name</FormLabel>
 
-                    <FormControl>
-                      <Input
-                        placeholder="Enter your full name"
-                        className="shad-input"
-                        {...field}
-                      />
-                    </FormControl>
-                  </div>
-                  <FormMessage className="shad-form-message" />
-                </FormItem>
-              )}
-            />
-          )}
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your full name"
+                          className="shad-input"
+                          {...field}
+                        />
+                      </FormControl>
+                    </div>
+                    <FormMessage className="shad-form-message" />
+                  </FormItem>
+                )}
+              />
+            )
+          }
 
           <FormField
             control={form.control}
