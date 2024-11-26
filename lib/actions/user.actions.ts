@@ -5,6 +5,7 @@ import { createAdminClient } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
 import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
+import { avatarPlaceholderUrl } from "@/constants";
 
 // Helper function
 const getUserByEmail = async (email: string) => {
@@ -54,7 +55,7 @@ export const createAccount = async ({ fullName, email }: {fullName: string; emai
       {
         fullName,
         email,
-        avatar: "https://www.svgrepo.com/show/452030/avatar-default.svg",
+        avatar: avatarPlaceholderUrl,
         accountId
       }
     );
