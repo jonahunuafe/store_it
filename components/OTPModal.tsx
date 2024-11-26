@@ -19,7 +19,7 @@ import {
   InputOTPSlot,
 } from '@/components/ui/input-otp';
 import { Button } from './ui/button';
-import { verifySecret } from '@/lib/actions/user.actions';
+import { sendEmailOTP, verifySecret } from '@/lib/actions/user.actions';
 import { useRouter } from 'next/navigation';
 
 const OtpModal = ({
@@ -52,6 +52,7 @@ const OtpModal = ({
 
   const handleResendOtp = async () => {
     // Call API to resend OTP
+    await sendEmailOTP({ email })
   };
 
   return (

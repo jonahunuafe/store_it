@@ -5,7 +5,6 @@ import { createAdminClient } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
 import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
-import { strict } from "assert";
 
 // Helper function
 const getUserByEmail = async (email: string) => {
@@ -27,7 +26,7 @@ const handleError = (error: unknown, message: string) => {
 }
 
 // Helper function
-const sendEmailOTP = async ({ email }: { email: string }) => {
+export const sendEmailOTP = async ({ email }: { email: string }) => {
   const { account } = await createAdminClient();
 
   try {
