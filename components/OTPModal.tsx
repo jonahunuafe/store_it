@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -40,9 +40,9 @@ const OtpModal = ({
 
     try {
       // Call API to verify OTP
-      const sessionId = await verifySecret({accountId, password});
+      const sessionId = await verifySecret({ accountId, password });
 
-      if(sessionId) router.push("/");
+      if (sessionId) router.push('/');
     } catch (error) {
       console.log('Failed to verify OTP', error);
     }
@@ -52,7 +52,7 @@ const OtpModal = ({
 
   const handleResendOtp = async () => {
     // Call API to resend OTP
-    await sendEmailOTP({ email })
+    await sendEmailOTP({ email });
   };
 
   return (
@@ -97,8 +97,8 @@ const OtpModal = ({
               Submit
               {isLoading && (
                 <Image
-                  src="/assets/icon/loader.svg"
-                  alt=""
+                  src="/assets/icons/loader.svg"
+                  alt="loader"
                   width={24}
                   height={24}
                   className="ml-2 animate-spin"
