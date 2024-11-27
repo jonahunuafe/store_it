@@ -22,7 +22,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  const handleRemoveFile = (e: React.MouseEvent<HTMLImageElement>, fileName: string) => {
+  const handleRemoveFile = (e: React.MouseEvent<HTMLImageElement, MouseEvent>, fileName: string) => {
     e.stopPropagation();
     setFiles((prevFiles) => prevFiles.filter((file) => file.name !== fileName))
   }
@@ -79,7 +79,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
       {isDragActive ? (
         <p>Drop the files here ...</p>
       ) : (
-        <p>Drag &apos; drop some files here, or click to select files</p>
+        <p>Drag &apos;n&apos; drop some files here, or click to select files</p>
       )}
     </div>
   );
