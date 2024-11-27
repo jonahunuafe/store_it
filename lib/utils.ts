@@ -9,6 +9,8 @@ export const parseStringify = (value: unknown) => {
   return JSON.parse(JSON.stringify(value))
 }
 
+export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
+
 export const getFileType = (fileName: string) => {
   const extension = fileName.split(".").pop()?.toLowerCase();
 
