@@ -1,3 +1,4 @@
+import Sort from '@/components/Sort';
 import React from 'react';
 
 const Page = async ({ params }: SearchParamProps) => {
@@ -15,9 +16,13 @@ const Page = async ({ params }: SearchParamProps) => {
 
           <div className="sort-container">
             <p className="body-1 hidden text-light-200 sm:block">Sort by:</p>
+            <Sort />
           </div>
         </div>
       </section>
+
+      {/* Dynamically render the files */}
+      
     </div>
   );
 };
