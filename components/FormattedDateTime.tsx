@@ -1,8 +1,8 @@
 import React from 'react'
 
-const FormattedDateTime = () => {
+const FormattedDateTime = ({ date, className }: {date: string; className?: string;}) => {
   return (
-    <div>FormattedDateTime</div>
+    <p>{}</p>
   )
 }
 
