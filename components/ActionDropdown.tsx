@@ -10,12 +10,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { actionsDropdownItems } from '@/constants';
+import { constructDownloadUrl } from '@/lib/utils';
+// import { Action } from '@radix-ui/react-alert-dialog';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Models } from 'node-appwrite';
 import { useState } from 'react';
 
-const ActionDropdown = () => {
+const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isModalOPen, setIsModalOpen] = useState(false);
   const [isDropdownOPen, setIsDropdownOpen] = useState(false);
+  const [action, setAction] = useState<ActionType | null>(null);
 
   return (
     <Dialog open={isModalOPen} onOpenChange={setIsModalOpen}>
@@ -30,13 +36,51 @@ const ActionDropdown = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel className="max-w-[200px] truncate">
-            
+            {file.name}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          {actionsDropdownItems.map((actionItem) => (
+            <DropdownMenuItem
+              key={actionItem.value}
+              className="shad-dropdown-item"
+              onClick={() => {
+                setAction(actionItem);
+
+                if (
+                  ['rename', 'share', 'delete', 'details'].includes(
+                    actionItem.value
+                  )
+                ) {
+                  setIsModalOpen(true);
+                }
+              }}
+            >
+              {actionItem.value === 'download' ? (
+                <Link
+                  href={constructDownloadUrl(file.bucketFileId)}
+                  download={file.name}
+                  className="flex items-center gap-2"
+                >
+                  <Image
+                    src={actionItem.icon}
+                    alt={actionItem.label}
+                    width={30}
+                    height={30}
+                  />
+                  {actionItem.label}
+                </Link>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={actionItem.icon}
+                    alt={actionItem.label}
+                    width={30}
+                    height={30}
+                  />
+                </div>
+              )}
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuContent>
       </DropdownMenu>
     </Dialog>
