@@ -171,6 +171,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
                     width={30}
                     height={30}
                   />
+                  {actionItem.label}
                 </div>
               )}
             </DropdownMenuItem>
