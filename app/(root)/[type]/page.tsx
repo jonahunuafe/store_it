@@ -1,13 +1,17 @@
 import Card from '@/components/Card';
 import Sort from '@/components/Sort';
 import { getFiles } from '@/lib/actions/file.actions';
+import { getFileTypesParams } from '@/lib/utils';
 import { Models } from "node-appwrite";
 import React from 'react';
 
 const Page = async ({ params }: SearchParamProps) => {
   const type = ((await params)?.type as string) || '';
 
-  const files = await getFiles();
+  // Utility function to help us filter based the the file type
+  const types = getFileTypesParams(type) as FileType[];
+
+  const files = await getFiles({ types });
 
   return (
     <div className="page-container">
