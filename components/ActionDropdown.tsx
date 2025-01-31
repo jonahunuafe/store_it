@@ -24,7 +24,7 @@ import { Models } from 'node-appwrite';
 import { useState } from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
-import { renameFile } from '@/lib/actions/file.actions';
+import { renameFile, updateFileUsers } from '@/lib/actions/file.actions';
 import { usePathname } from 'next/navigation';
 import { FileDetails, ShareInput } from './ActionsModalContent';
 
@@ -54,7 +54,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     const actions = {
       rename: () =>
         renameFile({ fileId: file.$id, name, extension: file.extension, path }),
-      share: () => console.log('share'),
+      share: () => updateFileUsers({fileId: file.$id, emails, path}),
       delete: () => console.log('delete'),
     };
 
