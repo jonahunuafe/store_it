@@ -1,4 +1,12 @@
-import React from 'react';
+"use client";
+
+import {
+  Label,
+  PolarGrid,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+} from "recharts";
 
 import {
   Card,
