@@ -1,13 +1,12 @@
-import { Models } from 'node-appwrite';
-import React from 'react';
-import Thumbnail from './Thumbnail';
-import FormattedDateTime from './FormattedDateTime';
-import { convertFileSize, formatDateTime } from '@/lib/utils';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import Image from 'next/image';
+import { Models } from "node-appwrite";
+import Thumbnail from "@/components/Thumbnail";
+import FormattedDateTime from "@/components/FormattedDateTime";
+import { convertFileSize, formatDateTime } from "@/lib/utils";
+import React from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
-// Helper component for displaying file information
 const ImageThumbnail = ({ file }: { file: Models.Document }) => (
   <div className="file-details-thumbnail">
     <Thumbnail type={file.type} extension={file.extension} url={file.url} />
@@ -25,7 +24,6 @@ const DetailRow = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
-// Helper component to display things within our Action Dropdown
 export const FileDetails = ({ file }: { file: Models.Document }) => {
   return (
     <>
@@ -58,7 +56,7 @@ export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
         <Input
           type="email"
           placeholder="Enter email address"
-          onChange={(e) => onInputChange(e.target.value.trim().split(','))}
+          onChange={(e) => onInputChange(e.target.value.trim().split(","))}
           className="share-input-field"
         />
         <div className="pt-4">
@@ -76,10 +74,13 @@ export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
                 className="flex items-center justify-between gap-2"
               >
                 <p className="subtitle-2">{email}</p>
-                <Button onClick={() => onRemove(email)} className="share-remove-user">
+                <Button
+                  onClick={() => onRemove(email)}
+                  className="share-remove-user"
+                >
                   <Image
                     src="/assets/icons/remove.svg"
-                    alt="remove"
+                    alt="Remove"
                     width={24}
                     height={24}
                     className="remove-icon"
